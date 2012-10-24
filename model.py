@@ -64,23 +64,23 @@ def complete_task(db, task_id):
 def get_tasks(db, u_id):
     c=db.cursor()
     if u_id == None:
-        print 'one'
         query="""SELECT * FROM tasks"""
         c.execute(query)
         result=c.fetchall()
-        print result
         return result
     else:
-        print 'two'
         query="""SELECT * FROM tasks WHERE user_id=?"""
         c.execute(query, (u_id, ))
         result=c.fetchall()
-        print result
-        return result
-
+        fields = ['task id', 'title', 'date created', 'date completed', 'user id']
+        tasks = []
+        for items in result:
+            tasks.append(dict(zip(fields, items)))
+        return tasks
 
 def get_task(db, task_id):
     c=db.cursor()
-    pass
-
-
+    query="""SELECT * FROM tasks WHERE id=?"""
+    c.execute(query, (task_id, ))
+    result=c.fetchone()
+    return result

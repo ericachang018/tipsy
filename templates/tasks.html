@@ -1,0 +1,20 @@
+<html>
+
+<head>
+    <title>tasks</title>
+</head>
+
+<body>
+    <h1> {{ user_name }} Task List </h1>
+    
+    
+<div>
+    <ul>
+    {% for item in task_list %}
+        <li>"{{ item }}"</li>
+    {% endfor %}
+</ul>
+</div>
+</body>   
+
+</html>
