@@ -10,10 +10,10 @@ def connect_db():
 '''
  add new user to database and return row ID for future reference
 '''
-def new_user(db, email, password, name):
+def new_user(db, email, password, name_the_first, name_the_last):
     c=db.cursor()
-    query=""" INSERT INTO users VALUES (NULL, ?,?,?)"""
-    results = c.execute(query, (email,password, name))
+    query=""" INSERT INTO users VALUES (NULL, ?, ?, ?, ?)"""
+    results = c.execute(query, (email, password, name_the_first, name_the_last))
     db.commit()
     return results.lastrowid 
 '''
@@ -26,10 +26,10 @@ def authenticate(db, user_email, user_password):
     query="""SELECT * FROM users WHERE email=? and password=?"""
     c.execute(query, (user_email, user_password))
     result = c.fetchone()
-    return results
-    if results:
+    return result
+    if result:
         fields = ['id', 'email', 'password', 'first name', 'last name']
-        return dict(zip(fields, results))
+        return dict(zip(fields, result))
 
     return None
 
