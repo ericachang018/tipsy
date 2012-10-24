@@ -63,17 +63,19 @@ def complete_task(db, task_id):
 
 def get_tasks(db, u_id):
     c=db.cursor()
+    fields = ['task id', 'title', 'date created', 'date completed', 'user id']
+    tasks = []
     if u_id == None:
         query="""SELECT * FROM tasks"""
         c.execute(query)
         result=c.fetchall()
-        return result
+        for items in result:
+            tasks.append(dict(zip(fields, items)))
+        return tasks
     else:
         query="""SELECT * FROM tasks WHERE user_id=?"""
         c.execute(query, (u_id, ))
         result=c.fetchall()
-        fields = ['task id', 'title', 'date created', 'date completed', 'user id']
-        tasks = []
         for items in result:
             tasks.append(dict(zip(fields, items)))
         return tasks

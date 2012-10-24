@@ -11,9 +11,9 @@
 <div>
     <ul>
     {% for item in task_list %}
-        <li>"{{ item }}"</li>
+        <li>Task {{item['task id'] }}: {{ item['title'] }}</li>
     {% endfor %}
-</ul>
+    </ul>
 </div>
 </body>   
 
