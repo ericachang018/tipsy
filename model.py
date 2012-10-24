@@ -41,3 +41,24 @@ def new_task (db, task_title, user_email):
     results = c.execute(query, (task_title, task_created_at, user_email))
     db.commit()
     return results.lastrowid
+#everything above this comment works! 
+
+def get_user(db, user_id):
+    c=db.cursor()
+    query="""SELECT * FROM users WHERE id=?"""
+    c.execute(query(user_id))
+    pass
+
+def complete_task(db, task_id):
+    c=db.cursor()
+    pass
+
+def get_tasks(db, user_id):
+    c=db.cursor()
+    pass
+
+def get_tasks(db, task_id):
+    c=db.cursor()
+    pass
+
+
