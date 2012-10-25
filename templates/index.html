@@ -6,6 +6,16 @@
 </head>
 <body>
     <h1>Welcome to Tipsy, {{ user_name }} </h1>
+    <p>Please enter your password and Username to enter. </p>
+    <form method="POST" action="/authenticate">
+        <h3> Email </h3>
+        <input type="text" name="email"></input><br>
+        <h3> Password </h3>
+        <input type="text" name = "password"></input><br>
+        <input type="submit"></input>
+    </form>
+    <a href="/new_task">Enter a New Task</a><br>
+    <a href="/tasks">View your tasks</a>
 
 </body>
 </html>
